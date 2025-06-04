@@ -63,8 +63,13 @@ public class ControladorVenta {
         double precio = producto.calcularPrecioVenta();
         double total = precio * cantidad;
 
-        String ajuste = producto instanceof modelo.dto.Perecedero ? "Reducción" :
-                        producto instanceof modelo.dto.NoPerecedero ? "Aumento" : "";
+        String ajuste = "";
+        if (producto instanceof modelo.dto.Perecedero) {
+            ajuste = "Reducción";
+        } else if (producto instanceof modelo.dto.NoPerecedero) {
+            ajuste = "Aumento";
+        }
+
 
         double valorAjuste = 0;
         if (producto instanceof modelo.dto.Perecedero) {

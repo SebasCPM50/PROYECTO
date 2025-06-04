@@ -5,6 +5,7 @@ import java.util.List;
 import modelo.dto.Venta;
 
 public class VentaDao {
+	
     private List<Venta> listaVentas = new ArrayList<>();
 
     public void agregarVenta(Venta venta) {
@@ -24,6 +25,10 @@ public class VentaDao {
     }
 
     public void imprimirFactura(String nombreCliente, String idCliente) {
+    	if (listaVentas.isEmpty()) {
+            System.out.println("No hay ventas registradas.");
+            return;
+        }
         System.out.println("FACTURA");
         System.out.println("Cliente: " + nombreCliente + " (ID: " + idCliente + ")");
         System.out.println("--------------------------------------------------");
@@ -41,6 +46,5 @@ public class VentaDao {
         }
         System.out.println("--------------------------------------------------");
         System.out.printf("TOTAL A PAGAR: %.2f\n", calcularTotalGeneral());
-        System.out.println("===============================");
     }
 }

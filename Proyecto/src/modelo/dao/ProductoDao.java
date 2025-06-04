@@ -27,8 +27,14 @@ public class ProductoDao {
     }
 
     public void eliminarProducto(String codigo) {
-        listaProducto.removeIf(p -> p.getCodigo().equals(codigo));
+        for (int i = 0; i < listaProducto.size(); i++) {
+            if (listaProducto.get(i).getCodigo().equals(codigo)) {
+                listaProducto.remove(i);
+                break;
+            }
+        }
     }
+
 
     public Producto buscarProducto(String codigo) {
         for (Producto p : listaProducto) {
